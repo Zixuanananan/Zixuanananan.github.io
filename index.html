@@ -205,14 +205,16 @@
 
     /* ── Education ── */
     .edu-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1.5rem;
-      padding: 1rem 0;
+      padding: 0.9rem 0;
       border-bottom: 1px solid var(--rule);
     }
     .edu-row:first-child { border-top: 1px solid var(--rule); }
+    .edu-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
     .edu-degree {
       font-size: 0.97rem;
       font-weight: 500;
@@ -220,7 +222,7 @@
     }
     .edu-inst {
       font-style: italic;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
     }
     .edu-right {
@@ -327,35 +329,46 @@
     <h2>Education</h2>
 
     <div class="edu-row">
-      <div>
+      <div class="edu-line">
         <p class="edu-degree">MSc Sociology and Social Research</p>
+        <span class="edu-right">2024 to present</span>
+      </div>
+      <div class="edu-line">
         <p class="edu-inst">Utrecht University</p>
+        <span class="edu-right">8.0 / 10.0</span>
       </div>
-      <div class="edu-right">2024 to present<br/>8.0 / 10.0</div>
     </div>
 
     <div class="edu-row">
-      <div>
+      <div class="edu-line">
         <p class="edu-degree">Summer School, Statistical Methods of Causal Inference</p>
+        <span class="edu-right">2025</span>
+      </div>
+      <div class="edu-line">
         <p class="edu-inst">Vrije Universiteit Amsterdam</p>
+        <span class="edu-right">9.0 / 10.0</span>
       </div>
-      <div class="edu-right">2025<br/>9.0 / 10.0</div>
     </div>
 
     <div class="edu-row">
-      <div>
+      <div class="edu-line">
         <p class="edu-degree">BA Sociology</p>
-        <p class="edu-inst">Fudan University, Shanghai</p>
+        <span class="edu-right">2021 to 2024</span>
       </div>
-      <div class="edu-right">2021 to 2024<br/>3.7 / 4.0</div>
+      <div class="edu-line">
+        <p class="edu-inst">Fudan University, Shanghai</p>
+        <span class="edu-right">3.7 / 4.0</span>
+      </div>
     </div>
 
     <div class="edu-row">
-      <div>
+      <div class="edu-line">
         <p class="edu-degree">Summer Exchange, Sociology</p>
+        <span class="edu-right">2023</span>
+      </div>
+      <div class="edu-line">
         <p class="edu-inst">National Tsing Hua University, Taiwan</p>
       </div>
-      <div class="edu-right">2023</div>
     </div>
 
   </section>
