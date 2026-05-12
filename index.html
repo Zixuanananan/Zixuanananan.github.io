@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zixuan Wang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #18181b;
+      --body:     #3f3f46;
+      --muted:    #71717a;
+      --light:    #a1a1aa;
+      --rule:     #e4e4e7;
+      --bg:       #ffffff;
+      --accent:   #1c4e80;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 19px;
+      line-height: 1.85;
+      color: var(--body);
+      background: var(--bg);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 3rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 50;
+    }
+    .nav-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 5rem 2rem 8rem;
+    }
+
+    /* ── Hero ── */
+    .hero-wrap {
+      background-image: url('painting.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      margin-bottom: 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-overlay {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(2px);
+      padding: 4rem 2rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .hero {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    .hero img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+    .hero .where {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-top: 0.4rem;
+    }
+    .hero .bio {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: var(--body);
+      max-width: 460px;
+      line-height: 1.75;
+    }
+    .hero .cta {
+      font-style: italic;
+      color: var(--accent);
+      margin-top: 0.75rem;
+      font-size: 0.97rem;
+    }
+    .hero-links {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+    .hero-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid #b8d0e8;
+      padding-bottom: 1px;
+    }
+    .hero-links a:hover { border-color: var(--accent); }
+
+    /* ── Section titles ── */
+    section { margin-bottom: 4.5rem; }
+
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 2rem;
+    }
+
+    p { margin-bottom: 0.85rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Research ── */
+    .project {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .project:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .project-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--light);
+      margin-top: 0.2rem;
+      margin-bottom: 0.7rem;
+    }
+    .project p { font-size: 0.95rem; color: var(--body); }
+
+    /* ── Publications ── */
+    .pub {
+      margin-bottom: 1.5rem;
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--rule);
+    }
+    .pub:last-child { margin-bottom: 0; }
+    .pub-title {
+      font-style: italic;
+      color: var(--ink);
+      font-size: 0.97rem;
+      line-height: 1.5;
+    }
+    .pub-details {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.73rem;
+      color: var(--light);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Education ── */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .edu-row:first-child { border-top: 1px solid var(--rule); }
+    .edu-degree {
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .edu-inst {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .edu-right {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Skills ── */
+    .skill-row {
+      display: flex;
+      gap: 2rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.93rem;
+    }
+    .skill-row:first-child { border-top: 1px solid var(--rule); }
+    .skill-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--light);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      width: 100px;
+      flex-shrink: 0;
+      padding-top: 0.1rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2.5rem 3rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--light);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 560px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      .hero-overlay { padding: 3rem 1.5rem; }
+      .hero { flex-direction: column; align-items: center; text-align: center; }
+      .hero .bio, .hero .cta { max-width: 100%; }
+      .hero-links { justify-content: center; }
+      .edu-row { flex-direction: column; gap: 0.15rem; }
+      .edu-right { text-align: left; }
+      .skill-row { flex-direction: column; gap: 0.2rem; }
+      .skill-label { width: auto; }
+      footer { flex-direction: column; gap: 0.5rem; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#">Zixuan Wang</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#research">Research</a>
+    <a href="#presentations">Conference</a>
+  </div>
+</nav>
+
+  <!-- Hero -->
+  <div class="hero-wrap" id="about">
+  <div class="hero-overlay">
+  <div class="hero">
+    <img src="photo.jpg" alt="Zixuan Wang" />
+    <div>
+      <h1>Zixuan Wang</h1>
+      <p class="where">MSc Sociology &nbsp;&middot;&nbsp; Utrecht University</p>
+      <p class="bio">
+        I am a Research Master's student in Sociology at Utrecht University working on social networks, health disparities, and social cohesion. I tend to reach for panel data, network analysis, or agent based models depending on what the question demands.
+      </p>
+      <p class="bio">
+        Before Utrecht I studied sociology at Fudan University in Shanghai, where I first got interested in how social structure shapes health and inequality.
+      </p>
+      <p class="cta">
+        Currently seeking a PhD position in health demography or epidemiology, with a focus on longitudinal data and advanced quantitative methods.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:z.wang36@students.uu.nl">z.wang36@students.uu.nl</a>
+        <a href="CV_ZixuanWang.pdf" target="_blank">Download CV</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+<div class="page">
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="edu-row">
+      <div>
+        <p class="edu-degree">MSc Sociology and Social Research</p>
+        <p class="edu-inst">Utrecht University</p>
+      </div>
+      <div class="edu-right">2024 to present<br/>8.0 / 10.0</div>
+    </div>
+
+    <div class="edu-row">
+      <div>
+        <p class="edu-degree">Summer School, Statistical Methods of Causal Inference</p>
+        <p class="edu-inst">Vrije Universiteit Amsterdam</p>
+      </div>
+      <div class="edu-right">2025<br/>9.0 / 10.0</div>
+    </div>
+
+    <div class="edu-row">
+      <div>
+        <p class="edu-degree">BA Sociology</p>
+        <p class="edu-inst">Fudan University, Shanghai</p>
+      </div>
+      <div class="edu-right">2021 to 2024<br/>3.7 / 4.0</div>
+    </div>
+
+    <div class="edu-row">
+      <div>
+        <p class="edu-degree">Summer Exchange, Sociology</p>
+        <p class="edu-inst">National Tsing Hua University, Taiwan</p>
+      </div>
+      <div class="edu-right">2023</div>
+    </div>
+
+  </section>
+
+  <!-- Research -->
+  <section id="research">
+    <h2>Research</h2>
+
+    <div class="project">
+      <p class="project-title">Chronic Condition Networks</p>
+      <p class="project-meta">NIDI &nbsp;&middot;&nbsp; Prof. Solveig A. Cunningham &nbsp;&middot;&nbsp; 2024 to present</p>
+      <p>I use network approach on SHARE panel data in R to examine how multimorbidity clusters and how it changes over time across 16 chronic conditions. Cardiovascular and metabolic diseases consistently form the core of these networks and act as strong predictors of newly acquired conditions. Currently I'm working on the accumulative effects of chronic conditions. </p>
+    </div>
+
+    <div class="project">
+      <p class="project-title">The Co-evolution of Social Networks and Environmental Opinions</p>
+      <p class="project-meta">Utrecht University &nbsp;&middot;&nbsp; Prof. Vincent Buskens &nbsp;&middot;&nbsp; 2024 to present</p>
+      <p>I build an agent based model in Python to study how fixed individual characteristics (education, for example) interact with network tie formation to produce or prevent consensus on environmental attitudes. The model generates predictions about social cohesion under different network structures using multilevel models.</p>
+    </div>
+
+    <div class="project">
+      <p class="project-title">Sexual Orientation, Leisure, and Health Disparities</p>
+      <p class="project-meta">Master's thesis &nbsp;&middot;&nbsp; Dr. Deni Mazrekaj &nbsp;&middot;&nbsp; 2025 to present</p>
+      <p>My thesis asks whether health gaps between sexual minority and heterosexual individuals are explained by differences in leisure participation. I use the LISS panel and estimate parallel mediation models with Coarsened Exact Matching to reduce selection bias. Cultural activities turn out to explain the better physical health of sexual minorities compared with heterosexuals.</p>
+    </div>
+
+    <div class="project">
+      <p class="project-title">Immigrant Career Trajectories in Germany</p>
+      <p class="project-meta">Utrecht University &nbsp;&middot;&nbsp; Prof. Ineke Maas &nbsp;&middot;&nbsp; 2024 to present</p>
+      <p>Working with 40 waves of the GSOEP (1984 to 2023), I estimate Latent Growth Curve Models to compare how immigrants and natives move through occupational careers over time. Immigrants tend to reach a lower peak status, but matching shows they arrive at equivalent status levels, just later.</p>
+    </div>
+
+    <div class="project">
+      <p class="project-title">Trust Networks Across Social Groups</p>
+      <p class="project-meta">Fudan University &nbsp;&middot;&nbsp; Prof. Felicia F. Tian &amp; Prof. Xue Li &nbsp;&middot;&nbsp; 2023 to 2025</p>
+      <p>Constructed interpersonal trust networks for 31 subgroups from six waves of the World Values Survey. I computed betweenness and closeness centrality across groups defined by income, education, and age to characterize how trust structures vary. Manuscript under review.</p>
+    </div>
+
+  </section>
+
+  <!-- Presentations -->
+  <section id="presentations">
+    <h2>Conference Presentations</h2>
+
+    <div class="pub">
+      <p class="pub-title">Modeling the Longitudinal Clustering Dynamics of Chronic Condition Networks</p>
+      <p class="pub-details">Wang Z, Banzato E, Cunningham SA &nbsp;&middot;&nbsp; Dutch Demography Day, Utrecht, 2026 &nbsp;&middot;&nbsp; 37th REVES, Tokyo, 2025 &nbsp;&middot;&nbsp; <em>Travel Grant</em></p>
+      <p class="pub-details" style="margin-top:0.4rem; color: var(--muted); font-size:0.82rem;">Applied Dynamic Bayesian Networks to SHARE panel data to examine how multimorbidity structures change over time across 16 chronic conditions. Cardiovascular diseases and arthritis emerged as predictors of later conditions.</p>
+    </div>
+
+    <div class="pub">
+      <p class="pub-title">The Social Networks of Chronic Diseases</p>
+      <p class="pub-details">Wang Z, Cunningham SA &nbsp;&middot;&nbsp; 36th REVES, Tampere, 2025 &nbsp;&middot;&nbsp; ODISSEI, Utrecht, 2025</p>
+      <p class="pub-details" style="margin-top:0.4rem; color: var(--muted); font-size:0.82rem;">Used Social Network Analysis on SHARE Wave 9 to map co-occurrence patterns of 16 chronic diseases. Identified three disease clusters and found cardiovascular conditions, arthritis, cataracts, and Alzheimer's disease to be the most central nodes in the network.</p>
+    </div>
+
+    <div class="pub">
+      <p class="pub-title">Absolute or Relative Educational Attainment: Education and Intergenerational Social Mobility</p>
+      <p class="pub-details">Wang Z, Liu X &nbsp;&middot;&nbsp; Chinese Sociological Association Annual Meeting, Harbin, 2024</p>
+      <p class="pub-details" style="margin-top:0.4rem; color: var(--muted); font-size:0.82rem;">Using China General Social Survey data (2008 to 2021), applied Bootstrap Mediation Analysis to compare how relative and absolute educational attainment shape intergenerational status transmission as education expanded over time.</p>
+    </div>
+
+    <div class="pub">
+      <p class="pub-title">Socioeconomic Status, Lifestyle, and Health Inequality</p>
+      <p class="pub-details">Wang Z, Tian FF &nbsp;&middot;&nbsp; Chinese Sociological Association Annual Meeting, Tianjin, 2023 &nbsp;&middot;&nbsp; <em>Wangdao Scholar Award</em></p>
+      <p class="pub-details" style="margin-top:0.4rem; color: var(--muted); font-size:0.82rem;">Estimated Latent Basis Growth Models on nine waves of the China Health and Nutrition Survey. Compared cumulative health trajectories across white-collar, blue-collar, and service workers, finding that early lifestyle behaviors play a decisive role in long-term health accumulation.</p>
+    </div>
+
+    <div class="pub">
+      <p class="pub-title">Community Integration of Cross-Border Marriage Immigrants</p>
+      <p class="pub-details">Wang Z &nbsp;&middot;&nbsp; Chinese Sociological Association Annual Meeting, Tianjin, 2023 &nbsp;&middot;&nbsp; <em>Outstanding Project Award</em></p>
+      <p class="pub-details" style="margin-top:0.4rem; color: var(--muted); font-size:0.82rem;">Based on four months of fieldwork in Yunnan Province using Respondent-Driven Sampling, interviewed 15 Burmese women married to Chinese men. Identified two structural dimensions and four distinct patterns of community integration.</p>
+    </div>
+
+  </section>
+
+  <!-- Other Experience -->
+  <section id="other">
+    <h2>Other Experience</h2>
+
+    <div class="project">
+      <p class="project-title">Data Analysis Intern, Strategy Department</p>
+      <p class="project-meta">Sanofi &nbsp;&middot;&nbsp; Shanghai &nbsp;&middot;&nbsp; Dec 2023 to Jan 2024</p>
+      <p>Conducted regression analysis on city-level GDP, hospital classifications, and sales performance to estimate market potential and recommend launch strategies for medications. Maintained and cleaned the company card database across all organizational levels, performing compliance risk screening on a biweekly basis. Also analyzed time-series attendance data to optimize the structure of corporate compliance training sessions.</p>
+    </div>
+
+    <div class="project">
+      <p class="project-title">Weekly Volunteer</p>
+      <p class="project-meta">Overvecht Food Bank &nbsp;&middot;&nbsp; Utrecht &nbsp;&middot;&nbsp; Nov 2024 to Aug 2025</p>
+      <p>Volunteered weekly at a local food bank in Utrecht, assisting with the sorting and distribution of food packages to community members in need.</p>
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Methods &amp; Tools</h2>
+    <div>
+      <div class="skill-row">
+        <span class="skill-label">Methods</span>
+        <span>Mediation analysis, causal inference (DiD, IV, RDD, matching), growth curve models, SEM, multilevel models, social network analysis, agent based modeling, dynamic Bayesian networks</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Software</span>
+        <span>R, Stata, Python, Gephi, MySQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span>Mandarin (native), English (IELTS 7.5), Dutch (Basic)</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Interests</span>
+        <span>Songwriting, painting, swimming, photography</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span>Zixuan Wang &nbsp;&middot;&nbsp; Utrecht University</span>
+  <span>z.wang36@students.uu.nl</span>
+</footer>
+
+</body>
+</html>
